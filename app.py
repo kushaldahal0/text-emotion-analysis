@@ -5,7 +5,8 @@ import numpy as np
 
 app = Flask(__name__)
 
-model = tf.keras.models.load_model('models/modell.tf')
+# model = tf.keras.models.load_model('models/modell.tf')
+model = tf.keras.models.load_model('models/modell93.tf')
 
 categs = {0: 'sadness', 1: 'joy', 2: 'love', 3: 'anger', 4: 'fear', 5: 'surprise'}
 batch_size = 32
@@ -19,7 +20,7 @@ def predict(text):
   return(categs[predicted_class_index])
 
 def res(text):
-    return f"<p class= 'text-6xl text-white sm:text-xl'>Text :<br>{text}<br> Emotion :<br>{predict(text)}</p>"
+    return f"<p class= 'text-6xl text-white sm:text-xl'>Emotion :<br>{predict(text)}<br> Text :<br>{text} </p>"
 
 
 @app.route('/', methods=['GET', 'POST'])
